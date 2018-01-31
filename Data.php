@@ -139,13 +139,41 @@ class Data {
 	}
 
 	/**
-	 * TODO: Get images and videos for project.
+	 * Gets all media items from a specific project.
 	 *
-	 * @param mysqli $mysqli
-	 * @param $projectId
-	 * @return array
+	 * @param mysqli $mysqli Mysqli connection
+	 * @param $projectId     Project to get images for
+	 * @return array         Images
+	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjectImages(mysqli $mysqli, $projectId) {
-		return array();
+		$query = "SELECT 'image', 'video' FROM portfolio_images WHERE project_id = ?";
+		$images = array();
+
+		//Prepare and execute query
+		if ($stmt = $mysqli->prepare($query)) {
+			$stmt->bind_param("i", $projectId);
+			$stmt->execute();
+
+			//Error?
+			if (!$stmt->errno) {
+				throw new Exception("Error: could not execute query. " . $stmt->error);
+			}
+
+			//Fetch data
+			$stmt->bind_result($image, $video);
+			while ($stmt->fetch()) {
+				if (empty($video)) {
+					$images[] = $image;
+				} else {
+					$images[] = new MediaItem($image, $video);
+				}
+			}
+			$stmt->close();
+
+			return $images;
+		} else {
+			throw new Exception("Error: could not prepare query. " . $mysqli->error);
+		}
 	}
 }
