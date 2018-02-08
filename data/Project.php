@@ -9,12 +9,22 @@ class Project {
 	public $tags;
 	public $date;
 
-	public function __construct($title, $images, $shortDescription, $fullDescription, $tags, $date) {
+	private $id;
+
+	public function __construct($id, $title, $shortDescription, $fullDescription, $tags, $date) {
+		$this->id = $id;
 		$this->title = $title;
-		$this->images = $images;
 		$this->shortDescription = $shortDescription;
 		$this->fullDescription = $fullDescription;
 		$this->tags = $tags;
 		$this->date = $date;
+	}
+
+	public function setImages($images) {
+		$this->images = $images;
+	}
+
+	public function getId() {
+		return $this->id;
 	}
 }

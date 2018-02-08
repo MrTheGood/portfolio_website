@@ -15,10 +15,23 @@ class Data {
 		$mysqli = getMysqli();
 
 		try {
+			$categories = Data::getCategories($mysqli);
+			foreach ($categories as $category) {
+				$category->setItems(Data::getProjects($mysqli, $category->getId()));
+			}
+
+			foreach ($categories as $category) {
+				foreach ($category->items as $project) {
+					if ($project instanceof Project) {
+						$project->setImages(Data::getProjectImages($mysqli, $project->getId()));
+					}
+				}
+			}
+
 			//Print success data
 			echo json_encode(array(
 				'success' => true,
-				'categories' => Data::getCategories($mysqli),
+				'categories' => $categories,
 				'about_me' => Data::getAboutMe($mysqli)
 			));
 		} catch (Exception $e) {
@@ -42,15 +55,12 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getAboutMe(mysqli $mysqli) {
-		$query = "SELECT 'about_me' FROM portfolio_about_me";
+		$query = "SELECT 'about_me' FROM about_me";
 
 		//Prepare and execute query
 		if ($stmt = $mysqli->prepare($query)) {
-			$stmt->execute();
-
-			//Error?
-			if (!$stmt->errno) {
-				throw new Exception("Error: could not execute query. " . $stmt->error);
+			if (!$stmt->execute()) {
+				throw new Exception("Error: could not execute query. query=$query;stmt->errno=" . $stmt->errno . ";stmt->error=" . $stmt->error);
 			}
 
 			//Fetch data
@@ -60,7 +70,7 @@ class Data {
 
 			return $about_me;
 		} else {
-			throw new Exception("Error: could not prepare query. " . $mysqli->error);
+			throw new Exception("Error: could not prepare query. query=$query,mysqli_error=" . mysqli_error($mysqli));
 		}
 	}
 
@@ -72,29 +82,25 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getCategories(mysqli $mysqli) {
-		$query = "SELECT id, 'title', 'icon' FROM portfolio_categories";
+		$query = "SELECT id, 'title', 'icon' FROM categories";
 		$categories = array();
 
 		//Prepare and execute query
 		if ($stmt = $mysqli->prepare($query)) {
-			$stmt->execute();
-
-			//Error?
-			if (!$stmt->errno) {
-				throw new Exception("Error: could not execute query. " . $stmt->error);
+			if (!$stmt->execute()) {
+				throw new Exception("Error: could not execute query. query=$query;stmt->errno=" . $stmt->errno . ";stmt->error=" . $stmt->error);
 			}
 
 			//Fetch data
 			$stmt->bind_result($categoryId, $title, $icon);
 			while ($stmt->fetch()) {
-				$projects = Data::getProjects($mysqli, $categoryId);
-				$categories[] = new Category($title, $icon, $projects);
+				$categories[] = new Category($categoryId, $title, $icon);
 			}
 			$stmt->close();
 
 			return $categories;
 		} else {
-			throw new Exception("Error: could not prepare query. " . $mysqli->error);
+			throw new Exception("Error: could not prepare query. query=$query,mysqli_error=" . mysqli_error($mysqli));
 		}
 	}
 
@@ -107,34 +113,26 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjects(mysqli $mysqli, $categoryId) {
-		$query = "
-		  	SELECT id, 'title', 'short_description', 'full_description', 'tags', 'project_date' 
-			FROM portfolio_projects
-			WHERE category_id = ?
-		";
+		$query = "SELECT id, 'title', 'short_description', 'full_description', 'tags', 'project_date' FROM projects WHERE category_id = ?";
 		$projects = array();
 
 		//Prepare and execute query
 		if ($stmt = $mysqli->prepare($query)) {
 			$stmt->bind_param("i", $categoryId);
-			$stmt->execute();
-
-			//Error?
-			if (!$stmt->errno) {
-				throw new Exception("Error: could not execute query. " . $stmt->error);
+			if (!$stmt->execute()) {
+				throw new Exception("Error: could not execute query. query=$query;stmt->errno=" . $stmt->errno . ";stmt->error=" . $stmt->error);
 			}
 
 			//Fetch data
 			$stmt->bind_result($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
 			while ($stmt->fetch()) {
-				$images = Data::getProjectImages($mysqli, $projectId);
-				$projects[] = new Project($title, $images, $shortDescription, $fullDescription, $tags, $date);
+				$projects[] = new Project($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
 			}
 			$stmt->close();
 
 			return $projects;
 		} else {
-			throw new Exception("Error: could not prepare query. " . $mysqli->error);
+			throw new Exception("Error: could not prepare query. query=$query,mysqli_error=" . mysqli_error($mysqli));
 		}
 	}
 
@@ -147,17 +145,14 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjectImages(mysqli $mysqli, $projectId) {
-		$query = "SELECT 'image', 'video' FROM portfolio_images WHERE project_id = ?";
+		$query = "SELECT 'image', 'video' FROM project_images WHERE project_id = ?";
 		$images = array();
 
 		//Prepare and execute query
 		if ($stmt = $mysqli->prepare($query)) {
 			$stmt->bind_param("i", $projectId);
-			$stmt->execute();
-
-			//Error?
-			if (!$stmt->errno) {
-				throw new Exception("Error: could not execute query. " . $stmt->error);
+			if (!$stmt->execute()) {
+				throw new Exception("Error: could not execute query. query=$query;stmt->errno=" . $stmt->errno . ";stmt->error=" . $stmt->error);
 			}
 
 			//Fetch data
@@ -173,7 +168,7 @@ class Data {
 
 			return $images;
 		} else {
-			throw new Exception("Error: could not prepare query. " . $mysqli->error);
+			throw new Exception("Error: could not prepare query. query=$query,mysqli_error=" . mysqli_error($mysqli));
 		}
 	}
 }
