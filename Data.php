@@ -55,7 +55,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getAboutMe(mysqli $mysqli) {
-		$query = "SELECT 'about_me' FROM about_me";
+		$query = "SELECT about_me FROM about_me";
 
 		//Prepare and execute query
 		if ($stmt = $mysqli->prepare($query)) {
@@ -82,7 +82,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getCategories(mysqli $mysqli) {
-		$query = "SELECT id, 'title', 'icon' FROM categories";
+		$query = "SELECT id, title, icon FROM categories";
 		$categories = array();
 
 		//Prepare and execute query
@@ -113,7 +113,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjects(mysqli $mysqli, $categoryId) {
-		$query = "SELECT id, 'title', 'short_description', 'full_description', 'tags', 'project_date' FROM projects WHERE category_id = ?";
+		$query = "SELECT id, title, short_description, full_description, tags, project_date FROM projects WHERE category_id = ?";
 		$projects = array();
 
 		//Prepare and execute query
@@ -145,7 +145,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjectImages(mysqli $mysqli, $projectId) {
-		$query = "SELECT 'image', 'video' FROM project_images WHERE project_id = ?";
+		$query = "SELECT image, video FROM project_images WHERE project_id = ?";
 		$images = array();
 
 		//Prepare and execute query
