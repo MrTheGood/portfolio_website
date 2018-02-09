@@ -16,6 +16,7 @@ class Data {
 
 		try {
 			$categories = Data::getCategories($mysqli);
+			$aboutMe = Data::getAboutMe($mysqli);
 			foreach ($categories as $category) {
 				$category->setItems(Data::getProjects($mysqli, $category->getId()));
 			}
@@ -32,7 +33,7 @@ class Data {
 			echo json_encode(array(
 				'success' => true,
 				'categories' => $categories,
-				'about_me' => Data::getAboutMe($mysqli)
+				'about_me' => $aboutMe
 			));
 		} catch (Exception $e) {
 			//Print failure data
