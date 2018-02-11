@@ -9,3 +9,11 @@ class MediaItem {
 		$this->image = $image;
 	}
 }
+
+class YouTubeItem {
+	public $youtube;
+
+	public function __construct($youtube) {
+		$this->youtube = $youtube;
+	}
+}

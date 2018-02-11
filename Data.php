@@ -83,7 +83,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getCategories(mysqli $mysqli) {
-		$query = "SELECT id, title, icon FROM categories";
+		$query = "SELECT id, title, icon FROM categories ORDER BY position ASC";
 		$categories = array();
 
 		//Prepare and execute query
@@ -114,7 +114,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjects(mysqli $mysqli, $categoryId) {
-		$query = "SELECT id, title, short_description, full_description, tags, project_date FROM projects WHERE category_id = ?";
+		$query = "SELECT id, title, short_description, full_description, tags, project_date FROM projects RIGHT JOIN projects_categories ON id = project_id WHERE category_id = ? ORDER BY position ASC";
 		$projects = array();
 
 		//Prepare and execute query
@@ -127,7 +127,7 @@ class Data {
 			//Fetch data
 			$stmt->bind_result($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
 			while ($stmt->fetch()) {
-				$projects[] = new Project($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
+				$projects[] = new Project($projectId, $title, $shortDescription, $fullDescription, explode(",", $tags), $date);
 			}
 			$stmt->close();
 
@@ -146,7 +146,7 @@ class Data {
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
 	private static function getProjectImages(mysqli $mysqli, $projectId) {
-		$query = "SELECT image, video FROM project_images WHERE project_id = ?";
+		$query = "SELECT image, video FROM project_images WHERE project_id = ? ORDER BY position ASC";
 		$images = array();
 
 		//Prepare and execute query
@@ -161,8 +161,10 @@ class Data {
 			while ($stmt->fetch()) {
 				if (empty($video)) {
 					$images[] = $image;
+				} else if (empty($image)) {
+					$images[] = new YouTubeItem($video);
 				} else {
-					$images[] = new MediaItem($image, $video);
+					$images[] = new MediaItem($video, $image);
 				}
 			}
 			$stmt->close();
