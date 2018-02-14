@@ -16,7 +16,11 @@ class Project {
 		$this->title = $title;
 		$this->shortDescription = $shortDescription;
 		$this->fullDescription = $fullDescription;
-		$this->tags = $tags;
+		foreach (explode(",", $tags) as $tag) {
+			if (!empty($tag) && $tag !== "") {
+				$this->tags[] = $tag;
+			}
+		}
 		$this->date = $date;
 	}
 

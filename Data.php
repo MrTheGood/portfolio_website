@@ -127,7 +127,7 @@ class Data {
 			//Fetch data
 			$stmt->bind_result($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
 			while ($stmt->fetch()) {
-				$projects[] = new Project($projectId, $title, $shortDescription, $fullDescription, explode(",", $tags), $date);
+				$projects[] = new Project($projectId, $title, $shortDescription, $fullDescription, $tags, $date);
 			}
 			$stmt->close();
 
