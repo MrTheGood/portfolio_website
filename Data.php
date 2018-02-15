@@ -12,22 +12,9 @@ class Data {
 	 * Prints json data.
 	 */
 	public static function printJson() {
-		$mysqli = getMysqli();
-
 		try {
-			$categories = Data::getCategories($mysqli);
-			$aboutMe = Data::getAboutMe($mysqli);
-			foreach ($categories as $category) {
-				$category->setItems(Data::getProjects($mysqli, $category->getId()));
-			}
-
-			foreach ($categories as $category) {
-				foreach ($category->items as $project) {
-					if ($project instanceof Project) {
-						$project->setImages(Data::getProjectImages($mysqli, $project->getId()));
-					}
-				}
-			}
+			$categories = self::getCategoriesStructure();
+			$aboutMe = self::getAboutMe();
 
 			//Print success data
 			echo json_encode(array(
@@ -44,18 +31,42 @@ class Data {
 				'error' => $e->getMessage()
 			));
 		}
+	}
+
+	/**
+	 * Gets the main data structure and returns it.
+	 *
+	 * @return array        Categories array containing all projects and project images.
+	 * @throws Exception    If an error occurs while getting the data.
+	 */
+	public static function getCategoriesStructure() {
+		$mysqli = getMysqli();
+
+		$categories = self::getCategories($mysqli);
+		foreach ($categories as $category) {
+			$category->setItems(self::getProjects($mysqli, $category->getId()));
+		}
+
+		foreach ($categories as $category) {
+			foreach ($category->items as $project) {
+				if ($project instanceof Project) {
+					$project->setImages(self::getProjectImages($mysqli, $project->getId()));
+				}
+			}
+		}
 
 		$mysqli->close();
+		return $categories;
 	}
 
 	/**
 	 * Returns about_me text.
 	 *
-	 * @param mysqli $mysqli Mysqli connection
 	 * @return mixed         About me text
 	 * @throws Exception     If an error occurs while fetching data.
 	 */
-	private static function getAboutMe(mysqli $mysqli) {
+	public static function getAboutMe() {
+		$mysqli = getMysqli();
 		$query = "SELECT about_me FROM about_me";
 
 		//Prepare and execute query
@@ -68,11 +79,11 @@ class Data {
 			$stmt->bind_result($about_me);
 			$stmt->fetch();
 			$stmt->close();
-
-			return $about_me;
 		} else {
 			throw new Exception("Error: could not prepare query. query=$query,mysqli_error=" . mysqli_error($mysqli));
 		}
+		$mysqli->close();
+		return $about_me;
 	}
 
 	/**
