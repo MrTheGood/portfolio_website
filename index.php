@@ -78,10 +78,11 @@ $aboutMe = Data::getAboutMe();
                             <div class="mdl-card mdl-cell mdl-cell--12-col">
                                 <!--TODO: images-->
                                 <div class="mdl-card__supporting-text">
-                                    <h4><?php echo $item->title ?></h4>
-                                    <!-- TODO: date -->
+                                    <h4 style="margin-bottom: 0;"><?php echo $item->title ?></h4>
+                                    <p style="color: #757575;"><?php echo $item->date ?></p>
 									<?php echo $item->shortDescription ?>
-                                    <!-- TODO: fullDescription -->
+                                    <div><?php echo $item->fullDescription ?></div>
+                                    <!-- TODO: fullDescription hidden-->
                                 </div>
                                 <div class="mdl-card__actions">
                                     <!-- TODO: tags -->
