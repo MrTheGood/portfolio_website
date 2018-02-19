@@ -94,7 +94,21 @@ $aboutMe = Data::getAboutMe();
                                          style="margin-top: 16px;"><?php echo $item->fullDescription ?></div>
                                 </div>
                                 <div class="mdl-card__actions">
-                                    <!-- TODO: tags -->
+									<?php
+									$colors = array('#00675b', '#009688', '#002984', '#3f51b5', '#087f23', '#4caf50', '#c79a00', '#ffca28');
+									foreach ($item->tags as $tag) {
+										if (!in_array($tag, $tags)) {
+											$tags[] = $tag;
+										}
+										$index = array_search($tag, $tags);
+										?>
+                                        <span class="mdl-chip"
+                                              style="color: #ffffff; background-color: <?php echo $colors[$index % sizeof($colors)] ?>;">
+                                            <span class="mdl-chip__text"><?php echo $tag; ?></span>
+                                        </span>
+										<?php
+									}
+									?>
                                     <button class="expander mdl-button mdl-js-button mdl-button--icon"
                                             style="float: right;">
                                         <i class="material-icons">keyboard_arrow_down</i>
