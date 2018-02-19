@@ -32,6 +32,15 @@ $aboutMe = Data::getAboutMe();
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .rotated {
+            transform: rotate(180deg);
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -moz-transform: rotate(180deg); /* Firefox */
+            -webkit-transform: rotate(180deg); /* Safari and Chrome */
+            -o-transform: rotate(180deg); /* Opera */
+        }
+    </style>
 </head>
 <body class="mdl mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -81,12 +90,15 @@ $aboutMe = Data::getAboutMe();
                                     <h4 style="margin-bottom: 0;"><?php echo $item->title ?></h4>
                                     <p style="color: #757575;"><?php echo $item->date ?></p>
 									<?php echo $item->shortDescription ?>
-                                    <div><?php echo $item->fullDescription ?></div>
-                                    <!-- TODO: fullDescription hidden-->
+                                    <div class="expandable"
+                                         style="margin-top: 16px;"><?php echo $item->fullDescription ?></div>
                                 </div>
                                 <div class="mdl-card__actions">
                                     <!-- TODO: tags -->
-                                    <!-- TODO: expand button -->
+                                    <button class="expander mdl-button mdl-js-button mdl-button--icon"
+                                            style="float: right;">
+                                        <i class="material-icons">keyboard_arrow_down</i>
+                                    </button>
                                 </div>
                             </div>
                         </section>
@@ -122,5 +134,7 @@ $aboutMe = Data::getAboutMe();
         </main>
     </div>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="./js/jquery-3.2.0.min.js"></script>
+    <script src="./js/javascript.js"></script>
 </body>
 </html>
