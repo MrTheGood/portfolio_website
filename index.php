@@ -179,7 +179,7 @@ $aboutMe = Data::getAboutMe();
             </div>
 
             <!-- Footer -->
-            <footer class="mdl-mini-footer">
+            <footer class="mdl-mini-footer" style="margin-top:32px;">
                 <div class="mdl-mini-footer--bottom-section">
                     <div class="mdl-logo">
                         Meer informatie
