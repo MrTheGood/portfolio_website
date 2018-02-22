@@ -40,6 +40,11 @@ $aboutMe = Data::getAboutMe();
             -webkit-transform: rotate(180deg); /* Safari and Chrome */
             -o-transform: rotate(180deg); /* Opera */
         }
+
+        .card-image-holder {
+            max-height: 320px;
+            background-color: #efefef;
+        }
     </style>
 </head>
 <body class="mdl mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -48,7 +53,7 @@ $aboutMe = Data::getAboutMe();
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                <h3>insertCode Portfolio</h3>
+                <h3>insertCode Portfolio Beta</h3>
             </div>
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
@@ -85,7 +90,47 @@ $aboutMe = Data::getAboutMe();
                                 class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"
                         >
                             <div class="mdl-card mdl-cell mdl-cell--12-col">
-                                <!--TODO: images-->
+								<?php
+								if (!empty($item->images)) {
+									?>
+                                    <!-- TODO: images -->
+                                    <div class="card-image-holder">
+
+										<?php
+										if (!empty($item->images)) {
+											$image = $item->images[0];
+											if ($image instanceof MediaItem) {
+												$image = $image->image;
+											}
+											?>
+                                            <img src="<?php echo $image ?>"
+                                                 class="card-image-holder"
+                                                 style="display: block; height: 100%; width: auto; margin: 0 auto; " />
+											<?php
+										}
+										/*
+										 * TODO: Implement multiple images
+                                        <!--
+										notes:
+										- Don't add if only 1 or 0 images
+										- Disable left if at first
+										- Disable right if at last
+										- Show next/prev image. Hide others.
+										 -->
+                                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
+                                                style="background-color: #ececec; margin-top: 25%; -webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%); float: left; margin-left: 16px; position: absolute; top: 0;">
+                                            <i class="material-icons">navigate_before</i>
+                                        </button>
+                                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
+                                                style="background-color: #ececec; margin-top: 25%; -webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%); float: right; margin-right: 16px; position: absolute; top: 0; right: 0;">
+                                            <i class="material-icons">navigate_next</i>
+                                        </button>
+										*/
+										?>
+                                    </div>
+									<?php
+								}
+								?>
                                 <div class="mdl-card__supporting-text">
                                     <h4 style="margin-bottom: 0;"><?php echo $item->title ?></h4>
                                     <p style="color: #757575;"><?php echo $item->date ?></p>
