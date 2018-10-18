@@ -115,7 +115,7 @@ $aboutMe = Data::getAboutMe();
 										- Don't add if only 1 or 0 images
 										- Disable left if at first
 										- Disable right if at last
-										- Show next/prev image. Hide others.
+										- Set img src on click
 										 -->
                                         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
                                                 style="background-color: #ececec; margin-top: 25%; -webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%); float: left; margin-left: 16px; position: absolute; top: 0;">
@@ -187,6 +187,7 @@ $aboutMe = Data::getAboutMe();
                     <ul class="mdl-mini-footer--link-list">
                         <li><a href="https://github.com/MrTheGood/">Github</a></li>
                         <li><a href="mailto:mail@insertcode.eu">Mail</a></li>
+                        <li><a href="https://portfolio.insertcode.eu/cv/cv.pdf">CV</a></li>
                     </ul>
                 </div>
             </footer>
