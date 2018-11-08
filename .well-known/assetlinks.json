@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "eu.insertcode.portfolio.alpha",
+    "sha256_cert_fingerprints":
+    ["2F:30:5F:75:76:75:81:7C:62:F5:55:4A:2E:77:11:E9:F0:F8:8B:56:F8:C0:99:4A:ED:15:11:61:A0:91:59:90"]
+  }
+}]
