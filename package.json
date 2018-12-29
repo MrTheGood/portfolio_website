@@ -1,0 +1,26 @@
+{
+  "name": "portfolio_website",
+  "version": "4.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_PATH=src node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrTheGood/portfolio_website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrTheGood/portfolio_website/issues"
+  },
+  "homepage": "https://github.com/MrTheGood/portfolio_website#readme",
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.5",
+    "nunjucks": "^3.1.6"
+  }
+}
