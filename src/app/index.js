@@ -2,14 +2,15 @@ const Koa = require('Koa')
 const views = require('koa-views')
 const path = require('path')
 const router = require('router')
+const nunjucks = require('nunjucks')
 
 const app = new Koa()
 
-app.use(views(path.resolve(__dirname, '../views'), {
-  map: {
-    html: 'nunjucks'
-  }
-}));
+const v = path.resolve(__dirname, '../views')
+nunjucks.configure(v)
+app.use(views(v, {
+  map: { njk: 'nunjucks' }
+}))
 
 app.use(router.routes())
 

@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 
 router.get('/', async (ctx) => {
-  await ctx.render('home')
+  await ctx.render('home.njk')
 })
 
 module.exports = router.routes()
