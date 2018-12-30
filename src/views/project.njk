@@ -17,9 +17,9 @@
                 <div class="project_type">
                     <i class="material-icons">{{ project.type }}</i>
                 </div>
-                <div>
+                <div class="project_title">
                     <strong>{{ project.title }}</strong>
-                    <span style="color: #757575;">{{ project.date }}</span>
+                    <span>{{ project.date }}</span>
                 </div>
                 <div class="section-spacer"></div>
                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -39,7 +39,7 @@
                     <i class="material-icons">share</i>
                 </button>
             </div>
-            <div class="meta-chips">
+            <div class="mdl-chips">
                 {% for tag in project.tags %}
                     <span class="mdl-chip" style="background-color: {{ tag[1] }};">
                         <span class="mdl-chip__text">{{ tag[0] | capitalize }}</span>

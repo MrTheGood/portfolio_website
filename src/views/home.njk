@@ -11,13 +11,15 @@
 			</header>
 			<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 				<div class="mdl-card__supporting-text">
-					<h4 style="margin-bottom: 0;">{{ item.title }}</h4>
-					<p style="color: #757575;">{{ item.date }}</p>
+					<div class="project_title">
+						<strong>{{ item.title }}</strong>
+						<span>{{ item.date }}</span>
+					</div>
 					{{ item.description | truncate(50, true) }}
 				</div>
-				<div class="mdl-card__actions">
+				<div class="mdl-card__actions mdl-chips">
 					{% for tag in item.tags %}
-						<span class="mdl-chip" style="color: #ffffff; background-color: {{ tag[1] }};">
+						<span class="mdl-chip" style="background-color: {{ tag[1] }};">
 							<span class="mdl-chip__text">{{ tag[0] | capitalize }}</span>
 						</span>
 					{% endfor %}
