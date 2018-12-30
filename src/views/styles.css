@@ -4,49 +4,50 @@ html, body {
     padding: 0
 }
 
-/* 
- * I know what you must be thinking.. Why so many? 
+/*
+ * I know what you must be thinking.. Why so many?
  * Well, I don't know that much about css and the normal way didn't seem to work.
  * MDL would just overwrite it. Even if I did !important or body > * + *.
- * So, this is how I'm setting the font now. 
+ * So, this is how I'm setting the font now.
  */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     font-family: 'Nunito', sans-serif
 }
 
-.mdl-layout__content {
+.mdl-portfolio .mdl-layout__content {
     padding-top: 40px
 }
 
-.mdl .mdl-layout__header-row-small {
+.mdl-portfolio .mdl-layout__header-row-small {
     height: 24px
 }
 
-.mdl .mdl-layout__header-row {
+.mdl-portfolio .mdl-layout__header-row {
     padding-left: 40px
 }
 
-.mdl .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+.mdl-portfolio .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
     font-size: inherit
 }
 
-.mdl .mdl-layout__tab-bar-button {
+.mdl-portfolio .mdl-layout__tab-bar-button {
     display: none
 }
 
-.mdl .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
+.mdl-portfolio .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
     display: none
 }
 
-.mdl .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar, .mdl .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
+.mdl-portfolio .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,
+.mdl-portfolio .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
     overflow: visible
 }
 
-.mdl .mdl-layout__tab-bar-container {
+.mdl-mdl-portfolio .mdl-layout__tab-bar-container {
     height: 64px
 }
 
-.mdl .mdl-layout__tab-bar {
+.mdl-portfolio .mdl-layout__tab-bar {
     padding: 0;
     padding-left: 16px;
     box-sizing: border-box;
@@ -54,22 +55,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     width: 100%
 }
 
-.mdl .mdl-layout__tab-bar .mdl-layout__tab {
+.mdl-portfolio .mdl-layout__tab-bar .mdl-layout__tab {
     height: 64px;
     line-height: 64px
 }
 
-.mdl .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
+.mdl-portfolio .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
     background-color: white;
     height: 4px
 }
 
-.mdl main > .mdl-layout__tab-panel {
+.mdl-portfolio main > .mdl-layout__tab-panel {
     padding: 8px;
     padding-top: 48px
 }
 
-.mdl .mdl-card {
+.mdl-portfolio .mdl-card {
     height: auto;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -79,11 +80,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     flex-direction: column
 }
 
-.mdl .mdl-card > * {
+.mdl-portfolio .mdl-card > * {
     height: auto
 }
 
-.mdl .mdl-card .mdl-card__supporting-text {
+.mdl-portfolio .mdl-card .mdl-card__supporting-text {
     margin: 40px;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -93,52 +94,53 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     width: calc(100% - 80px)
 }
 
-.mdl.mdl .mdl-card__supporting-text h4 {
+.mdl-portfolio .mdl-card__supporting-text h4 {
     margin-top: 0;
     margin-bottom: 20px
 }
 
-.mdl .mdl-card__actions {
+.mdl-portfolio .mdl-card__actions {
     margin: 0;
     padding: 4px 40px;
     color: inherit
 }
 
-.mdl .mdl-card__actions a {
+.mdl-portfolio .mdl-card__actions a {
     color: #00bcd4;
     margin: 0
 }
 
-.mdl .mdl-card__actions a:hover, .mdl .mdl-card__actions a:active {
+.mdl-portfolio .mdl-card__actions a:hover,
+.mdl-portfolio .mdl-card__actions a:active {
     color: inherit;
     background-color: transparent
 }
 
-.mdl .mdl-card__supporting-text + .mdl-card__actions {
+.mdl-portfolio .mdl-card__supporting-text + .mdl-card__actions {
     border-top: 1px solid rgba(0, 0, 0, 0.12)
 }
 
-.mdl #add {
+.mdl-portfolio #add {
     position: absolute;
     right: 40px;
     top: 36px;
     z-index: 999
 }
 
-.mdl .mdl-layout__content section:not(:last-of-type) {
+.mdl-portfolio .mdl-layout__content section:not(:last-of-type) {
     position: relative;
     margin-bottom: 48px
 }
 
-.mdl section.section--center {
+.mdl-portfolio section.section--center {
     max-width: 860px
 }
 
-.mdl #features section.section--center {
+.mdl-portfolio #features section.section--center {
     max-width: 620px
 }
 
-.mdl section > header {
+.mdl-portfolio section > header {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -150,22 +152,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     justify-content: center
 }
 
-.mdl section > .section__play-btn {
+.mdl-portfolio section > .section__play-btn {
     min-height: 200px
 }
 
-.mdl section > header > .material-icons {
+.mdl-portfolio section > header > .material-icons {
     font-size: 3rem
 }
 
-.mdl section > button {
+.mdl-portfolio section > button {
     position: absolute;
     z-index: 99;
     top: 8px;
     right: 8px
 }
 
-.mdl section .section__circle {
+.mdl-portfolio section .section__circle {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -183,7 +185,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     flex-shrink: 1
 }
 
-.mdl section .section__text {
+.mdl-portfolio section .section__text {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
@@ -193,63 +195,63 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding-top: 8px
 }
 
-.mdl section .section__text h5 {
+.mdl-portfolio section .section__text h5 {
     font-size: inherit;
     margin: 0;
     margin-bottom: .5em
 }
 
-.mdl section .section__text a {
+.mdl-portfolio section .section__text a {
     text-decoration: none
 }
 
-.mdl section .section__circle-container > .section__circle-container__circle {
+.mdl-portfolio section .section__circle-container > .section__circle-container__circle {
     width: 64px;
     height: 64px;
     border-radius: 32px;
     margin: 8px 0
 }
 
-.mdl section.section--footer .section__circle--big {
+.mdl-portfolio section.section--footer .section__circle--big {
     width: 100px;
     height: 100px;
     border-radius: 50px;
     margin: 8px 32px
 }
 
-.mdl .is-small-screen section.section--footer .section__circle--big {
+.mdl-portfolio .is-small-screen section.section--footer .section__circle--big {
     width: 50px;
     height: 50px;
     border-radius: 25px;
     margin: 8px 16px
 }
 
-.mdl section.section--footer {
+.mdl-portfolio section.section--footer {
     padding: 64px 0;
     margin: 0 -8px -8px -8px
 }
 
-.mdl section.section--center .section__text:not(:last-child) {
+.mdl-portfolio section.section--center .section__text:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, .13)
 }
 
-.mdl .mdl-card .mdl-card__supporting-text > h3:first-child {
+.mdl-portfolio .mdl-card .mdl-card__supporting-text > h3:first-child {
     margin-bottom: 24px
 }
 
-.mdl .mdl-layout__tab-panel:not(#overview) {
+.mdl-portfolio .mdl-layout__tab-panel:not(#overview) {
     background-color: white
 }
 
-.mdl #features section {
+.mdl-portfolio #features section {
     margin-bottom: 72px
 }
 
-.mdl #features h4, #features h5 {
+.mdl-portfolio #features h4, #features h5 {
     margin-bottom: 16px
 }
 
-.mdl .toc {
+.mdl-portfolio .toc {
     border-left: 4px solid #c1eef4;
     margin: 24px;
     padding: 0;
@@ -262,12 +264,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     flex-direction: column
 }
 
-.mdl .toc h4 {
+.mdl-portfolio .toc h4 {
     font-size: .9rem;
     margin-top: 0
 }
 
-.mdl .toc a {
+.mdl-portfolio .toc a {
     color: #4dd0e1;
     text-decoration: none;
     font-size: 16px;
@@ -275,6 +277,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     display: block
 }
 
-.mdl .mdl-menu__container {
+.mdl-portfolio .mdl-menu__container {
     z-index: 99
 }

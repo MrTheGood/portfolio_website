@@ -2,25 +2,12 @@
 {% extends "base.njk" %}
 
 {# Demo content for now #}
-{% set project = {images: ['https://portfolio.insertcode.eu/media/app_android_portfolio_1.png'], title: "meow", date: 'now', description: 'Lorem ipsum. In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content. Replacing the actual content with placeholder text allows designers to design the form of the content before the content itself has been produced.', tags: [['one','#00675b'],['two','#009688'],['three','#002984']]} %}
+{% set project = {images: ['https://portfolio.insertcode.eu/media/app_android_portfolio_1.png'], type:'smartphone', title: "meow", date: 'now', description: 'Lorem ipsum. In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content. Replacing the actual content with placeholder text allows designers to design the form of the content before the content itself has been produced.', tags: [['one','#00675b'],['two','#009688'],['three','#002984']]} %}
 
 {% block main %}
     <style>
         {# TODO: Move this css to the css document, check if everything is in order #}
-        body::before {
-            background-size: cover;
-            background-attachment: fixed;
-            content: '';
-            will-change: transform;
-            z-index: -1;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            position: fixed;
-        }
-
-        .mdl-project .mdl-project__posts {
+        .mdl-portfolio .mdl-project__posts {
             max-width: 900px;
             padding: 0;
             display: flex;
@@ -29,30 +16,8 @@
             flex-shrink: 0;
         }
 
-        .mdl-project .mdl-card {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            min-height: 360px;
-        }
 
-        .mdl-project .mdl-card__media {
-            box-sizing: border-box;
-            background-size: cover;
-            padding: 24px;
-            display: flex;
-            flex-grow: 1;
-            flex-direction: row;
-            align-items: flex-end;
-            cursor: pointer;
-        }
-
-        .mdl-project .mdl-card__media a,
-        .mdl-project .mdl-card__title a {
-            color: inherit;
-        }
-
-        .mdl-project .mdl-card__supporting-text {
+        .mdl-portfolio .mdl-card__supporting-text {
             width: 100%;
             padding: 16px;
             min-height: 64px;
@@ -60,24 +25,24 @@
             align-items: center;
         }
 
-        .mdl-project .mdl-card__supporting-text strong {
+        .mdl-portfolio .mdl-card__supporting-text strong {
             font-weight: 400;
         }
 
-        .mdl-project .mdl-card__media ~ .mdl-card__supporting-text {
+        .mdl-portfolio .mdl-card__media ~ .mdl-card__supporting-text {
             min-height: 64px;
         }
 
-        .mdl-project .mdl-card__supporting-text:not(:last-child) {
+        .mdl-portfolio .mdl-card__supporting-text:not(:last-child) {
             box-sizing: border-box;
             min-height: 76px;
         }
 
-        .mdl-project:not(.mdl-project--projectpost) .mdl-card__supporting-text ~ .mdl-card__supporting-text {
+        .mdl-portfolio:not(.mdl-portfolio--projectpost) .mdl-card__supporting-text ~ .mdl-card__supporting-text {
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .mdl-project .meta {
+        .mdl-portfolio .meta {
             box-sizing: border-box;
             padding: 16px;
             display: flex;
@@ -87,43 +52,30 @@
             height: auto;
         }
 
-        .mdl-project .meta > *:first-child {
+        .mdl-portfolio .meta > *:first-child {
             margin-right: 16px;
         }
 
-        .mdl-project .meta > * {
+        .mdl-portfolio .meta > * {
             display: flex;
             flex-direction: column;
         }
 
-        .mdl-project .mdl-card > a {
-            color: inherit;
-            text-decoration: none;
-            font-weight: inherit;
-        }
-
-        .mdl-project--projectpost .mdl-project__posts > .mdl-card .mdl-card__media {
+        .mdl-portfolio--projectpost .mdl-project__posts > .mdl-card .mdl-card__media {
             height: 280px;
         }
 
-        .mdl-project--projectpost .meta > * {
+        .mdl-portfolio--projectpost .meta > * {
             align-items: center;
         }
 
-        .mdl-project--projectpost .meta + .mdl-card__supporting-text {
+        .mdl-portfolio--projectpost .meta + .mdl-card__supporting-text {
             border: 0;
             display: flex;
             flex-direction: column;
         }
 
-        .mdl-project--projectpost .meta + .mdl-card__supporting-text p {
-            max-width: 512px;
-            margin: 16px auto;
-            font-size: 16px;
-            line-height: 28px;
-        }
-
-        .mdl-project--projectpost .mdl-back {
+        .mdl-portfolio--projectpost .mdl-back {
             position: absolute;
             top: 16px;
             left: 16px;
@@ -131,18 +83,18 @@
             z-index: 9999;
         }
 
-        .mdl-project .section-spacer {
+        .mdl-portfolio .section-spacer {
             flex-grow: 1;
         }
 
-        .mdl-project .project_type {
+        .mdl-portfolio .project_type {
             width: 44px;
             height: 44px;
-            border-radius: 22px;
+            border-radius: 50%;
             background-color: #858585;
         }
 
-        .mdl-project .project_type .material-icons {
+        .mdl-portfolio .project_type .material-icons {
             margin: auto;
             color: white;
         }
@@ -155,7 +107,7 @@
         }
 
     </style>
-    <div class="mdl-project mdl-project--projectpost">
+    <div class="mdl-portfolio--projectpost">
         <div class="page-content" style="background: #f5f5f5;">
             <div class="mdl-project__posts mdl-grid">
                 <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
