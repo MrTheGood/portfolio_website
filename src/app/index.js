@@ -1,7 +1,7 @@
-const Koa = require('Koa')
+const Koa = require('koa')
 const views = require('koa-views')
 const path = require('path')
-const router = require('router')
+const router = require('../router')
 const nunjucks = require('nunjucks')
 
 const app = new Koa()

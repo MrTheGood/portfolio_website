@@ -7,39 +7,36 @@
 {% block main %}
     <style>
         {# TODO: Move this css to the css document, check if everything is in order #}
-        .mdl-portfolio .mdl-project__posts {
+        .mdl-portfolio .mdl-project__post {
             max-width: 900px;
             padding: 0;
             display: flex;
             width: 100%;
             margin: 0 auto;
-            flex-shrink: 0;
+            flex-shrink: 0
         }
 
 
         .mdl-portfolio .mdl-card__supporting-text {
             width: 100%;
-            padding: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
             min-height: 64px;
             display: flex;
-            align-items: center;
+            align-items: center
         }
 
         .mdl-portfolio .mdl-card__supporting-text strong {
-            font-weight: 400;
-        }
-
-        .mdl-portfolio .mdl-card__media ~ .mdl-card__supporting-text {
-            min-height: 64px;
+            font-weight: 400
         }
 
         .mdl-portfolio .mdl-card__supporting-text:not(:last-child) {
             box-sizing: border-box;
-            min-height: 76px;
+            min-height: 76px
         }
 
-        .mdl-portfolio:not(.mdl-portfolio--projectpost) .mdl-card__supporting-text ~ .mdl-card__supporting-text {
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        .mdl-portfolio:not(.mdl-project__post) .mdl-card__supporting-text ~ .mdl-card__supporting-text {
+            border-top: 1px solid rgba(0, 0, 0, 0.1)
         }
 
         .mdl-portfolio .meta {
@@ -49,112 +46,116 @@
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            height: auto;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            height: auto
+        }
+
+        .mdl-portfolio .meta-chips {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .mdl-portfolio .meta-chips .mdl-chip {
+            color: #ffffff
         }
 
         .mdl-portfolio .meta > *:first-child {
-            margin-right: 16px;
+            margin-right: 16px
         }
 
         .mdl-portfolio .meta > * {
             display: flex;
-            flex-direction: column;
+            flex-direction: column
         }
 
-        .mdl-portfolio--projectpost .mdl-project__posts > .mdl-card .mdl-card__media {
-            height: 280px;
+        .mdl-portfolio .mdl-project__post > .mdl-card .mdl-card__media {
+            display: block;
+            width: 100%;
+            height: auto
         }
 
-        .mdl-portfolio--projectpost .meta > * {
-            align-items: center;
-        }
-
-        .mdl-portfolio--projectpost .meta + .mdl-card__supporting-text {
+        .mdl-portfolio .meta + .mdl-card__supporting-text {
             border: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: column
         }
 
-        .mdl-portfolio--projectpost .mdl-back {
+        .mdl-portfolio .meta .project_type {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #858585
+        }
+
+        .mdl-portfolio .meta .project_type .material-icons {
+            margin: auto;
+            color: white
+        }
+
+        .mdl-portfolio .meta .octicon {
+            fill: currentColor;
+            margin: auto;
+            width: 24px;
+            height: 24px
+        }
+
+        .mdl-portfolio .mdl-back {
             position: absolute;
             top: 16px;
             left: 16px;
             color: white;
-            z-index: 9999;
+            z-index: 9999
         }
 
         .mdl-portfolio .section-spacer {
-            flex-grow: 1;
-        }
-
-        .mdl-portfolio .project_type {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #858585;
-        }
-
-        .mdl-portfolio .project_type .material-icons {
-            margin: auto;
-            color: white;
-        }
-
-        .octicon {
-            fill: currentColor;
-            margin: auto;
-            width: 24px;
-            height: 24px;
+            flex-grow: 1
         }
 
     </style>
-    <div class="mdl-portfolio--projectpost">
-        <div class="page-content" style="background: #f5f5f5;">
-            <div class="mdl-project__posts mdl-grid">
-                <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-                    <div class="mdl-back">
-                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="../" title="go back" role="button">
-                            <i class="material-icons">arrow_back</i>
-                        </a>
-                    </div>
-                    <div class="mdl-card__media mdl-color-text--grey-50" style="background: url('{{ project.images | first }}') center / cover;">
-                    </div>
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-                        <div class="project_type">
-                            <i class="material-icons">{{ project.type }}</i>
-                        </div>
-                        <div>
-                            <strong>{{ project.title }}</strong>
-                            <span style="color: #757575;">{{ project.date }}</span>
-                        </div>
-                        <div class="section-spacer"></div>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i class="octicon">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="octicon">
-                                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                            </i>
-                        </button>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i class="material-icons">link</i>
-                        </button>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i class="material-icons">android</i>
-                        </button>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i class="material-icons">share</i>
-                        </button>
-                    </div>
-                    <div>
-                        {% for tag in project.tags %}
-                            <span class="mdl-chip" style="color: #ffffff; background-color: {{ tag[1] }};">
-                                <span class="mdl-chip__text">{{ tag[0] | capitalize }}</span>
-                            </span>
-                        {% endfor %}
-                    </div>
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-                        {{ project.description }}
-                    </div>
+    <div class="mdl-project__post mdl-grid">
+        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+            <div class="mdl-back">
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" onclick="location.href='../'">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+            </div>
+            <img class="mdl-card__media" src="{{ project.images | first }}" alt=""/>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+                <div class="project_type">
+                    <i class="material-icons">{{ project.type }}</i>
                 </div>
+                <div>
+                    <strong>{{ project.title }}</strong>
+                    <span style="color: #757575;">{{ project.date }}</span>
+                </div>
+                <div class="section-spacer"></div>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="octicon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="octicon">
+                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">link</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">android</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons">share</i>
+                </button>
+            </div>
+            <div class="meta-chips">
+                {% for tag in project.tags %}
+                    <span class="mdl-chip" style="background-color: {{ tag[1] }};">
+                        <span class="mdl-chip__text">{{ tag[0] | capitalize }}</span>
+                    </span>
+                {% endfor %}
+            </div>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+                {{ project.description }}
             </div>
         </div>
     </div>
