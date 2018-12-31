@@ -7,6 +7,7 @@
 {% block main %}
 	{% for item in projects %}
 		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+			{# TODO IMAGE FIXED ASPECT RATIO #}
 			<header class="mdl-card-coverimage mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--amber-200 mdl-color-text--white" style="background: url('{{ item.images | first }}') center / cover;">
 			</header>
 			<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">

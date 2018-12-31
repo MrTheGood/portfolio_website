@@ -191,6 +191,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     align-items: center
 }
 
+.mdl-portfolio .mdl-project__post .mdl-card__supporting-text p {
+    max-width: 512px
+}
+
 .mdl-portfolio .mdl-project__post .mdl-chips + .mdl-card__supporting-text {
     border: 0;
     display: flex;
