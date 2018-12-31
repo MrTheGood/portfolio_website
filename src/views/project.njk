@@ -1,9 +1,6 @@
 <!-- todo Firebase tutorial: https://codelabs.developers.google.com/codelabs/firestore-web/#0 -->
 {% extends "base.njk" %}
 
-{# Demo content for now #}
-{% set project = {images: ['https://portfolio.insertcode.eu/media/app_android_portfolio_1.png'], type:'smartphone', title: "meow", date: 'now', description: 'Lorem ipsum. In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content. Replacing the actual content with placeholder text allows designers to design the form of the content before the content itself has been produced.', tags: [['one','#00675b'],['two','#009688'],['three','#002984']]} %}
-
 {% block main %}
     <div class="mdl-project__post mdl-grid">
         <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
@@ -14,8 +11,8 @@
             </div>
             <img class="mdl-card__media" src="{{ project.images | first }}" alt=""/>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-                <div class="project_type">
-                    <i class="material-icons">{{ project.type }}</i>
+                <div class="project_type" style="background-color: {{ project.type[1] }}">
+                    <i class="material-icons">{{ project.type[0] }}</i>
                 </div>
                 <div class="project_title">
                     <strong>{{ project.title }}</strong>
