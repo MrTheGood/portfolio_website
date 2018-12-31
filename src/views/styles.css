@@ -136,6 +136,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     justify-content: flex-start;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    width: calc(100% - 32px) !important;
     height: auto
 }
 
@@ -168,8 +171,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .mdl-portfolio .mdl-project__post .mdl-chips {
-    margin-left: 40px;
-    margin-right: 40px
+    margin-left: 16px;
+    margin-right: 16px
 }
 
 /* Texts */
