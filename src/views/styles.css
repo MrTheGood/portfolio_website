@@ -167,7 +167,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     fill: currentColor;
     margin: auto;
     width: 24px;
-    height: 24px
+    height: 24px;
+
+    padding: 0 2px 4px
 }
 
 .mdl-portfolio .mdl-project__post .mdl-chips {
