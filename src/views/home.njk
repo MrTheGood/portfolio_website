@@ -1,12 +1,14 @@
-<!-- todo Firebase tutorial: https://codelabs.developers.google.com/codelabs/firestore-web/#0 -->
 {% extends "base.njk" %}
 
 {% block main %}
 	{% for item in projects %}
 		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 			{# TODO IMAGE FIXED ASPECT RATIO #}
-			<header class="mdl-card-coverimage mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--amber-200 mdl-color-text--white" style="background: url('{{ item.images | first }}') center / cover;">
-			</header>
+			{% if item.images %}
+				<header class="mdl-card-coverimage mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--amber-200 mdl-color-text--white"
+						style="background: url('{{ item.images | first }}') center / cover;">
+				</header>
+			{% endif %}
 			<div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 				<div class="mdl-card__supporting-text">
 					<div class="project_title">
@@ -21,9 +23,11 @@
 							<span class="mdl-chip__text">{{ tag[0] | capitalize }}</span>
 						</span>
 					{% endfor %}
-					<button class="mdl-button mdl-js-button mdl-button--accent" onclick="location.href='./projects/{{ item.id }}'">
-						Read More
-					</button>
+					<a href="./projects/{{ item.id }}">
+						<button class="mdl-button mdl-js-button mdl-button--accent">
+							Read More
+						</button>
+					</a>
 				</div>
 			</div>
 		</section>
