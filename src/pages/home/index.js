@@ -2,6 +2,23 @@ const router = require('koa-router')()
 const admin = require('firebase-admin')
 
 router.get('/', async (ctx) => {
+  const tags = []
+  const tagColors = [
+    '#6200ea', '#64dd17', '#0091ea',
+    '#4dd0e1', '#d500f9', '#f50057',
+    '#00ff00', '#ffc400', '#ff9100'
+  ]
+
+  function getTagColor(tag) {
+    tag = tag.charAt(0).toUpperCase() + tag.slice(1)
+
+    if (!tags.includes(tag))
+      tags.push(tag)
+    const pos = tags.indexOf(tag) % tagColors.length
+
+    return [tag, tagColors[pos]]
+  }
+
   const projects = []
   const projectTypeIndicator = {
     app: ['smartphone', '#00c853'],
@@ -22,7 +39,7 @@ router.get('/', async (ctx) => {
         id: data.id,
         images: data.images || [],
         links: data.links || [],
-        tags: [['Android', '#6200ea'], ['Kotlin', '#64dd17'], ['android', '#6200ea']],//todo: do
+        tags: (data.tags || []).map(getTagColor),
         title: data.title,
         type: projectTypeIndicator[data.type || 'other']
       })
