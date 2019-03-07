@@ -33,6 +33,7 @@ router.get('/', async (ctx) => {
 
     await ctx.render('home.njk', { projects })
   } catch (e) {
+    console.log("error", e)
     // todo do
   }
 
