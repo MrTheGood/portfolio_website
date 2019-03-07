@@ -16,23 +16,25 @@ router.get('/:projectId', async (ctx) => {
     const doc = await admin.firestore().collection('projects').doc(projectId).get()
     const data = doc.data()
 
-    if (doc) {
+    if (doc && data) {
       await ctx.render('project.njk', {
         project: {
-          date: data.date,
+          date: data.date || '',
           description: data.description,
           id: data.id,
           images: data.images,
-          links: data.links,
+          links: data.links || [],
           tags: [['Android', '#6200ea'], ['Kotlin', '#64dd17'], ['android', '#6200ea']],//todo: do
           title: data.title,
-          type: projectTypeIndicator[data.type],
-        },
+          type: projectTypeIndicator[data.type || 'other']
+        }
       })
     } else {
+      console.log('not found!', projectId)
       //todo: reroute to home
     }
   } catch (e) {
+    console.log('error', e)
     // todo: do
   }
 })

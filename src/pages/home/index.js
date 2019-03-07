@@ -17,23 +17,20 @@ router.get('/', async (ctx) => {
     snapshot.forEach(doc => {
       const data = doc.data()
       projects.push({
-        date: data.date,
+        date: data.date || '',
         description: data.description,
         id: data.id,
-        images: data.images,
-        links: data.links,
+        images: data.images || [],
+        links: data.links || [],
         tags: [['Android', '#6200ea'], ['Kotlin', '#64dd17'], ['android', '#6200ea']],//todo: do
         title: data.title,
-        type: projectTypeIndicator[data.type],
+        type: projectTypeIndicator[data.type || 'other']
       })
-    })
-    projects.forEach(item => {
-      console.log('images:', item.images)
     })
 
     await ctx.render('home.njk', { projects })
   } catch (e) {
-    console.log("error", e)
+    console.log('error', e)
     // todo do
   }
 
