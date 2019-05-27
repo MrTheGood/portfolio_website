@@ -1,6 +1,11 @@
 {% extends "base.njk" %}
 
 {% block main %}
+	<a href="./about/" style="right: 64px; position: absolute;">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+			<i class="material-icons">person</i>
+		</button>
+	</a>
 	{% for item in projects %}
 		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 			{# TODO IMAGE FIXED ASPECT RATIO #}
