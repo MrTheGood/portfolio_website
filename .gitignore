@@ -222,4 +222,4 @@ typings/
 media/
 cv/
 config.php
-/src/serviceAccountKey.json
+/src/app/serviceAccountKey.json
