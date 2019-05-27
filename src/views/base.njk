@@ -17,7 +17,18 @@
     <meta name="apple-mobile-web-app-title" content="insertCode Portfolio">
     <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
-    <link rel="shortcut icon" href="https://portfolio.insertcode.eu/images/favicon.ico">
+    <link rel="shortcut icon" href="https://portfolio.insertcode.eu/images/favicon.ico"><!-- TODO: static files in koa -->
+
+    <script src="https://unpkg.com/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new ClipboardJS('.share-btn', {
+          text: function() {
+            return window.location.href
+          }
+        })
+      })
+    </script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=nl">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
