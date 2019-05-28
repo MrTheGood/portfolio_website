@@ -1,12 +1,5 @@
 {
   "name": "portfolio",
-  "engines": {
-    "node": "12.3.1"
-  },
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "3000"
-  },
   "builds": [
     {
       "src": "*/index.js",
