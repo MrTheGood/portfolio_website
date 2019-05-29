@@ -1,0 +1,226 @@
+html, body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0
+}
+
+/*
+ * I know what you must be thinking.. Why so many?
+ * Well, I don't know that much about css and the normal way didn't seem to work.
+ * MDL would just overwrite it. Even if I did !important or body > * + *.
+ * So, this is how I'm setting the font now.
+ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    font-family: 'Nunito', sans-serif
+}
+
+/* Layout */
+.mdl-portfolio .mdl-layout__content {
+    padding-top: 48px;
+    background: #f5f5f5
+}
+
+.mdl-portfolio .mdl-layout__content section {
+    position: relative;
+    margin-bottom: 24px
+}
+
+.mdl-portfolio section.section--center {
+    max-width: 860px
+}
+
+.mdl-portfolio .mdl-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: white;
+    z-index: 9999
+}
+
+.mdl-portfolio .section-spacer {
+    flex-grow: 1
+}
+
+/* Header elements */
+.mdl-portfolio .mdl-layout__header-row-small {
+    height: 24px
+}
+
+.mdl-portfolio .mdl-layout__header-row {
+    padding-left: 40px
+}
+
+.mdl-portfolio .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+    font-size: inherit
+}
+
+.mdl-portfolio section > header {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.mdl-portfolio section > header > .material-icons {
+    font-size: 3rem
+}
+
+/* Cards */
+.mdl-portfolio .mdl-card {
+    height: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.mdl-portfolio .mdl-card > * {
+    height: auto
+}
+
+.mdl-portfolio section > .mdl-card-coverimage {
+    min-height: 200px
+}
+
+/* Card Actions */
+.mdl-portfolio .mdl-card__actions {
+    margin: 0;
+    padding: 4px 40px;
+    color: inherit
+}
+
+.mdl-portfolio .mdl-card__actions button {
+    float: right
+}
+
+.mdl-portfolio .mdl-card__supporting-text + .mdl-card__actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.12)
+}
+
+/* Chips */
+.mdl-portfolio .mdl-chips > .mdl-chip {
+    color: #ffffff
+}
+
+/* Project post */
+.mdl-portfolio .mdl-project__post {
+    max-width: 900px;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 48px;
+    flex-shrink: 0
+}
+
+.mdl-portfolio .mdl-project__post > .mdl-card .mdl-card__media {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+/* Project post meta */
+.mdl-portfolio .mdl-project__post .meta {
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    width: calc(100% - 32px) !important;
+    height: auto
+}
+
+.mdl-portfolio .mdl-project__post .meta > *:first-child {
+    margin-right: 16px
+}
+
+.mdl-portfolio .mdl-project__post .meta > * {
+    display: flex;
+    flex-direction: column
+}
+
+.mdl-portfolio .mdl-project__post .meta .project_type {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #858585
+}
+
+.mdl-portfolio .mdl-project__post .meta .project_type .material-icons {
+    margin: auto;
+    color: white
+}
+
+.mdl-portfolio .mdl-project__post .meta .octicon {
+    fill: currentColor;
+    margin: auto;
+    width: 24px;
+    height: 24px;
+
+    padding: 0 2px 4px
+}
+
+.mdl-portfolio .mdl-project__post .mdl-chips {
+    margin-left: 16px;
+    margin-right: 16px
+}
+
+/* Texts */
+.mdl-portfolio .mdl-card .mdl-card__supporting-text {
+    margin: 40px;
+    margin-bottom: 32px;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: 0;
+    color: inherit;
+    width: calc(100% - 80px)
+}
+
+.mdl-portfolio .mdl-project__post .mdl-card__supporting-text {
+    flex-grow: 1;
+    min-height: 64px;
+    display: flex;
+    align-items: center
+}
+
+.mdl-portfolio .mdl-project__post .mdl-card__supporting-text p {
+    max-width: 512px
+}
+
+.mdl-portfolio .mdl-project__post .mdl-chips + .mdl-card__supporting-text {
+    border: 0;
+    display: flex;
+    flex-direction: column
+}
+
+.mdl-portfolio .mdl-card__supporting-text:not(:last-child) {
+    box-sizing: border-box;
+    height: auto
+}
+
+.mdl-portfolio .project_title {
+    display: flex;
+    flex-direction: column
+}
+
+.mdl-portfolio .project_title strong {
+    font-size: 1.5rem;
+    font-weight: 400
+}
+
+.mdl-portfolio .project_title span {
+    color: #757575
+}

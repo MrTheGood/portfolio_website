@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="insertCode portfolio website.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}insertCode - Portfolio{% endblock %}</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="insertCode Portfolio">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <link rel="shortcut icon" href="https://portfolio.insertcode.eu/images/favicon.ico">
+
+    <script src="https://unpkg.com/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new ClipboardJS('.share-btn', {
+          text: function() {
+            return window.location.href
+          }
+        })
+      })
+    </script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=nl">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css">
+    <style>{% include "styles.css" %}</style>
+</head>
+<body class="mdl-portfolio mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% block header %}
+            {% include "header.njk" %}
+        {% endblock %}
+        <main class="mdl-layout__content">
+            {% block main %}
+            {% endblock %}
+
+            <!-- Footer -->
+            {% block foot %}
+                {% include "footer.njk" %}
+            {% endblock %}
+        </main>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
