@@ -14,10 +14,6 @@
       "use": "@now/static"
     },
     {
-      "src": "*.pdf",
-      "use": "@now/static"
-    },
-    {
       "src": "*.png",
       "use": "@now/static"
     },

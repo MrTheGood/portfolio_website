@@ -1,6 +1,3 @@
 node_modules
 .gitignore
 .idea
-*.indd
-*.php
-*/media
