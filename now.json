@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "alias": "portfolio.insertcode.eu",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node-server",
+      "config": {
+        "maxLambdaSize": "100mb"
+      }
+    },
+    {
+      "src": "*.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.pdf",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.json",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.njk",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    }
+  ]
+}
