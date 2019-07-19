@@ -30,13 +30,14 @@ router.get('/', async (ctx) => {
 
   let snapshot
   try {
-    snapshot = await admin.firestore().collection('projects').orderBy('importance', 'desc').get()
+    snapshot = await admin.firestore().collection('projects').where('listed', '==', true).get()
     snapshot.forEach(doc => {
       const data = doc.data()
       projects.push({
         date: data.date || '',
         description: data.description,
         id: data.id,
+        importance: data.importance || 0,
         images: data.images || [],
         links: data.links || [],
         tags: (data.tags || []).map(getTagColor),
@@ -44,6 +45,10 @@ router.get('/', async (ctx) => {
         type: projectTypeIndicator[data.type || 'other']
       })
     })
+
+    projects.sort((a, b) => {
+      return b.importance - a.importance
+    });
 
     await ctx.render('home.njk', { projects })
   } catch (e) {
